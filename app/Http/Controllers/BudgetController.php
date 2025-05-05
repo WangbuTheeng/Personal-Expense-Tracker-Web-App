@@ -17,6 +17,16 @@ class BudgetController extends Controller
     public function index(): View
     {
         $budgets = Auth::user()->budgets()->with('category')->get();
+        
+        // Calculate used amount for each budget
+        $budgets = $budgets->map(function($budget) {
+            $budget->usedAmount = $budget->getUsedAmount();
+            $budget->percentageUsed = $budget->getPercentageUsed();
+            $budget->remainingAmount = $budget->getRemainingAmount();
+            $budget->isOverBudget = $budget->isOverBudget();
+            return $budget;
+        });
+        
         return view('budgets.index', compact('budgets'));
     }
 
