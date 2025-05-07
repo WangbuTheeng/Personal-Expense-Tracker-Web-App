@@ -26,6 +26,8 @@ class Budget extends Model
         'start_date',
         'end_date',
         'description',
+        'notified_approaching',
+        'notified_exceeded'
     ];
     
     /**
@@ -96,5 +98,21 @@ class Budget extends Model
     public function isOverBudget()
     {
         return $this->getUsedAmount() > $this->amount;
+    }
+
+    /**
+     * Get current spending amount for this budget period
+     */
+    public function getCurrentSpending()
+    {
+        return abs($this->getUsedAmount());
+    }
+
+    /**
+     * Calculate the percentage used of the budget.
+     */
+    public function getPercentUsed()
+    {
+        return $this->getPercentageUsed();
     }
 }

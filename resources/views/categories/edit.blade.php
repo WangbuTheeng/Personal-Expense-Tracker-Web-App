@@ -26,6 +26,17 @@
                         </div>
 
                         <div class="mb-4">
+                            <x-input-label for="type" :value="__('Category Type')" />
+                            <select id="type" name="type" class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 shadow-sm">
+                                <option value="both" {{ old('type', $category->type) == 'both' ? 'selected' : '' }}>Both Income & Expense</option>
+                                <option value="income" {{ old('type', $category->type) == 'income' ? 'selected' : '' }}>Income Only</option>
+                                <option value="expense" {{ old('type', $category->type) == 'expense' ? 'selected' : '' }}>Expense Only</option>
+                            </select>
+                            <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ __('Choose where this category can be used') }}</div>
+                            <x-input-error :messages="$errors->get('type')" class="mt-2" />
+                        </div>
+
+                        <div class="mb-4">
                             <x-input-label for="icon" :value="__('Icon (Optional HTML)')" />
                             <x-text-input id="icon" class="block mt-1 w-full" type="text" name="icon" :value="old('icon', $category->icon)" placeholder="<i class='fas fa-home'></i>" />
                             <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ __('Enter an HTML icon tag or leave blank') }}</div>

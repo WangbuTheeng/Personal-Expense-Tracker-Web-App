@@ -21,7 +21,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <span class="text-gray-500 dark:text-gray-400 sm:text-sm">NRs</span>
                                     </div>
-                                    <x-text-input id="amount" class="block mt-1 w-full pl-7" type="number" step="0.01" name="amount" :value="old('amount', $expense->amount)" required autofocus />
+                                    <x-text-input id="amount" class="block mt-1 w-full pl-7" type="number" step="0.01" name="amount" :value="old('amount', abs($expense->amount))" required autofocus />
                                 </div>
                                 <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                             </div>

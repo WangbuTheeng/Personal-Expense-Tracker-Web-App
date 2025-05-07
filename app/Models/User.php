@@ -70,4 +70,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Budget::class);
     }
+    
+    /**
+     * Get the savings goals for the user.
+     */
+    public function savingsGoals(): HasMany
+    {
+        return $this->hasMany(SavingsGoal::class);
+    }
+
+    /**
+     * Get user settings
+     */
+    public function settings()
+    {
+        return $this->hasOne(UserSetting::class)->withDefault();
+    }
 }

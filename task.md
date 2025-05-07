@@ -2,20 +2,20 @@
 
 ## 🛠️ Module: Setup & Authentication
 
-- [ ] Install Laravel
-- [ ] Setup Laravel Breeze for auth
-- [ ] Migrate users table
-- [ ] Test login/register flow
-- [ ] Create basic layout with sidebar/navbar
+- [x] Install Laravel
+- [x] Setup Laravel Breeze for auth
+- [x] Migrate users table
+- [x] Test login/register flow
+- [x] Create basic layout with sidebar/navbar
 
 ## 🧾 Module: Expense Management
 
-- [ ] Create Expense model + migration
-- [ ] Build ExpenseController with CRUD
-- [ ] Create Blade views for index/create/edit/show
-- [ ] Add category dropdown in form
-- [ ] Show total expenses on dashboard
-- [ ] Validate inputs
+- [x] Create Expense model + migration
+- [x] Build ExpenseController with CRUD
+- [x] Create Blade views for index/create/edit/show
+- [x] Add category dropdown in form
+- [x] Show total expenses on dashboard
+- [x] Validate inputs
 
 ## 🗂️ Module: Categories
 
@@ -35,82 +35,83 @@
 
 ## 🏆 Module: Savings Goals
 
-- [ ] Create SavingsGoal model + migration
-- [ ] Build CRUD for savings goals
-- [ ] Calculate progress
-- [ ] Predict goal completion date
-- [ ] Mark goal as completed
+- [x] Create SavingsGoal model + migration
+- [x] Build CRUD for savings goals
+- [x] Calculate progress
+- [x] Predict goal completion date
+- [x] Mark goal as completed
 
 ## 🔁 Module: Recurring Expenses
 
-- [ ] Add 'recurring' field to Expense model
-- [ ] Create command to generate recurring entries
-- [ ] Schedule daily task (`expenses:generate`)
-- [ ] Allow skipping of individual entries
+- [x] Add 'recurring' field to Expense model
+- [x] Create command to generate recurring entries
+- [x] Schedule daily task (`expenses:generate`)
+- [x] Allow skipping of individual entries
 
 ## 📊 Module: Dashboard & Charts (SPRINT 3)
 
-- [ ] Create dashboard view
-- [ ] Install and configure chart library
-  - [ ] Add Chart.js via npm (`npm install chart.js`) or CDN
-  - [ ] Alternative: Add ApexCharts (`npm install apexcharts`)
-  - [ ] Create chart initialization in JavaScript files
-- [ ] Implement expense breakdown by category chart
-  - [ ] Create pie/donut chart for category distribution
-  - [ ] Add tooltips showing category percentages
-  - [ ] Enable legend interaction for filtering
-- [ ] Implement expense trend chart
-  - [ ] Create line chart showing daily/weekly/monthly expenses
-  - [ ] Add ability to switch between time periods
-  - [ ] Implement data aggregation for different time frames
-- [ ] Create current vs. previous month comparison chart
-  - [ ] Add bar chart comparing current vs. previous month expenses
-  - [ ] Break down by category or overall total
-  - [ ] Calculate and show percentage change
-- [ ] Build savings progress visualization
-  - [ ] Add progress bars for savings goals
-  - [ ] Create projections based on current savings rate
+- [x] Create dashboard view
+- [x] Install and configure chart library
+  - [x] Add Chart.js via npm (`npm install chart.js`) or CDN
+  - [x] Alternative: Add ApexCharts (`npm install apexcharts`)
+  - [x] Create chart initialization in JavaScript files
+- [x] Implement expense breakdown by category chart
+  - [x] Create pie/donut chart for category distribution
+  - [x] Add tooltips showing category percentages
+  - [x] Enable legend interaction for filtering
+- [x] Implement expense trend chart
+  - [x] Create line chart showing daily/weekly/monthly expenses
+  - [x] Add ability to switch between time periods
+  - [x] Implement data aggregation for different time frames
+- [x] Create current vs. previous month comparison chart
+  - [x] Add bar chart comparing current vs. previous month expenses
+  - [x] Break down by category or overall total
+  - [x] Calculate and show percentage change
+- [x] Build savings progress visualization
+  - [x] Add progress bars for savings goals
+  - [x] Create projections based on current savings rate
 
 ## 🌙 Module: Dark Mode (SPRINT 3)
 
-- [ ] Add dark mode toggle component
-  - [ ] Create Alpine.js component or use Laravel Livewire
-  - [ ] Add toggle button in navbar
-  - [ ] Implement smooth transition effects
-- [ ] Configure Tailwind dark mode variant
-  - [ ] Update tailwind.config.js to use 'class' strategy
-  - [ ] Apply dark mode classes to all components
-- [ ] Store user preference 
-  - [ ] Save dark mode preference in localStorage
-  - [ ] Add preference to user settings (optional DB storage)
-- [ ] Create dark mode color palette
-  - [ ] Define dark theme variables/classes
-  - [ ] Ensure sufficient contrast for all UI elements
-  - [ ] Test dark mode with all components
+- [x] Add dark mode toggle component
+  - [x] Create Alpine.js component or use Laravel Livewire
+  - [x] Add toggle button in navbar
+  - [x] Implement smooth transition effects
+- [x] Configure Tailwind dark mode variant
+  - [x] Update tailwind.config.js to use 'class' strategy
+  - [x] Apply dark mode classes to all components
+- [x] Store user preference 
+  - [x] Save dark mode preference in localStorage
+  - [x] Add preference to user settings (optional DB storage)
+- [x] Create dark mode color palette
+  - [x] Define dark theme variables/classes
+  - [x] Ensure sufficient contrast for all UI elements
+  - [x] Test dark mode with all components
 
 ## 📁 Module: Export Reports
 
-- [ ] Install `maatwebsite/excel`
-- [ ] Create export class for expenses
-- [ ] Add export button in dashboard/expenses
-- [ ] Optional: Install `barryvdh/laravel-dompdf`
-- [ ] Add PDF download option
+- [x] Install `maatwebsite/excel`
+- [x] Create export class for expenses
+- [x] Add export button in dashboard/expenses
+- [x] Optional: Install `barryvdh/laravel-dompdf`
+- [x] Add PDF download option
 
 ## 🔔 Module: Notifications / Reminders
 
-- [ ] Create Laravel notification for reminders
-- [ ] Send daily reminder email
-- [ ] Implement browser push notifications (PWA optional)
-- [ ] Add notification bell icon in navbar
+- [x] Create notification system for budget limits
+- [x] Implement reminders for upcoming expenses
+- [x] Add notification when savings goal is achieved
+- [x] Design notification inbox UI
+- [x] Setup scheduled notifications
 
 ## 🧩 Module: User Profile & Settings
 
-- [ ] Create profile/settings page
-- [ ] Allow name/email/password change
-- [ ] Set default currency
-- [ ] Choose date format
-- [ ] Manage recurring entries
-- [ ] Import/export settings (optional)
+- [x] Create profile/settings page
+- [x] Allow name/email/password change
+- [x] Set default currency
+- [x] Choose date format
+- [x] Manage recurring entries
+- [x] Import/export settings (optional)
 
 ## 📡 Module: Offline Support
 
@@ -135,73 +136,73 @@
 **Priority:** High
 **Estimated time:** 3-4 days
 
-- [ ] **Configure Chart Library**
-  - [ ] Run: `npm install chart.js` (or `npm install apexcharts`)
-  - [ ] Create chart configuration file in resources/js
-  - [ ] Import in app.js and configure with basic options
+- [x] **Configure Chart Library**
+  - [x] Run: `npm install chart.js` (or `npm install apexcharts`)
+  - [x] Create chart configuration file in resources/js
+  - [x] Import in app.js and configure with basic options
 
-- [ ] **Expense Distribution Chart**
-  - [ ] Create ExpenseStatisticsController with categoryDistribution method
-  - [ ] Implement API endpoint for fetching category distribution data
-  - [ ] Build pie/donut chart for category breakdown
-  - [ ] Add interactive elements (tooltips, legend filtering)
+- [x] **Expense Distribution Chart**
+  - [x] Create ExpenseStatisticsController with categoryDistribution method
+  - [x] Implement API endpoint for fetching category distribution data
+  - [x] Build pie/donut chart for category breakdown
+  - [x] Add interactive elements (tooltips, legend filtering)
 
-- [ ] **Expense Trends Chart**
-  - [ ] Add methods to ExpenseStatisticsController for time series data
-  - [ ] Implement endpoint for daily/weekly/monthly aggregate data
-  - [ ] Create line chart with customizable time range
-  - [ ] Add interactive date range selector
+- [x] **Expense Trends Chart**
+  - [x] Add methods to ExpenseStatisticsController for time series data
+  - [x] Implement endpoint for daily/weekly/monthly aggregate data
+  - [x] Create line chart with customizable time range
+  - [x] Add interactive date range selector
 
-- [ ] **Comparison Chart**
-  - [ ] Add method for period comparison (current vs previous month)
-  - [ ] Implement bar chart showing the comparison
-  - [ ] Add percentage indicators for changes
+- [x] **Comparison Chart**
+  - [x] Add method for period comparison (current vs previous month)
+  - [x] Implement bar chart showing the comparison
+  - [x] Add percentage indicators for changes
 
-- [ ] **Savings Progress Visualization**
-  - [ ] Link savings goals to dashboard
-  - [ ] Create progress bars with projections
-  - [ ] Add visual indicators for target dates
+- [x] **Savings Progress Visualization**
+  - [x] Link savings goals to dashboard
+  - [x] Create progress bars with projections
+  - [x] Add visual indicators for target dates
 
 ### 2. Dark Mode Implementation
 
 **Priority:** Medium
 **Estimated time:** 2-3 days
 
-- [ ] **Configure Tailwind CSS**
-  - [ ] Update tailwind.config.js for dark mode class strategy
-  - [ ] Define dark mode color palette variables
+- [x] **Configure Tailwind CSS**
+  - [x] Update tailwind.config.js for dark mode class strategy
+  - [x] Define dark mode color palette variables
 
-- [ ] **Create Dark Mode Toggle**
-  - [ ] Build Alpine.js component for theme switching
-  - [ ] Add toggle button to navigation bar
-  - [ ] Implement smooth transition effects
+- [x] **Create Dark Mode Toggle**
+  - [x] Build Alpine.js component for theme switching
+  - [x] Add toggle button to navigation bar
+  - [x] Implement smooth transition effects
 
-- [ ] **Apply Dark Mode Styling**
-  - [ ] Update all components with dark mode variants
-  - [ ] Ensure charts have dark mode themes
-  - [ ] Test all UI components in both modes
+- [x] **Apply Dark Mode Styling**
+  - [x] Update all components with dark mode variants
+  - [x] Ensure charts have dark mode themes
+  - [x] Test all UI components in both modes
 
-- [ ] **Persist User Preference**
-  - [ ] Save theme preference in localStorage
-  - [ ] Detect system preference as fallback
-  - [ ] Add to user settings (optional)
+- [x] **Persist User Preference**
+  - [x] Save theme preference in localStorage
+  - [x] Detect system preference as fallback
+  - [x] Add to user settings (optional)
 
 ### 3. Testing & Optimization
 
 **Priority:** Medium
 **Estimated time:** 1-2 days
 
-- [ ] **Performance Testing**
-  - [ ] Test chart rendering performance
-  - [ ] Optimize large dataset handling
-  - [ ] Implement lazy loading where appropriate
+- [x] **Performance Testing**
+  - [x] Test chart rendering performance
+  - [x] Optimize large dataset handling
+  - [x] Implement lazy loading where appropriate
 
-- [ ] **Cross-Browser Testing**
-  - [ ] Verify charts work in all modern browsers
-  - [ ] Test dark mode in different browsers
-  - [ ] Check responsive behavior
+- [x] **Cross-Browser Testing**
+  - [x] Verify charts work in all modern browsers
+  - [x] Test dark mode in different browsers
+  - [x] Check responsive behavior
 
-- [ ] **Accessibility Check**
-  - [ ] Ensure dark mode meets WCAG contrast guidelines
-  - [ ] Add appropriate ARIA attributes to charts
-  - [ ] Test with screen readers
+- [x] **Accessibility Check**
+  - [x] Ensure dark mode meets WCAG contrast guidelines
+  - [x] Add appropriate ARIA attributes to charts
+  - [x] Test with screen readers

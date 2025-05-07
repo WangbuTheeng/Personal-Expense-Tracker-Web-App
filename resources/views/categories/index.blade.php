@@ -38,6 +38,9 @@
                                             {{ __('Name') }}
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                            {{ __('Type') }}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                             {{ __('Expenses') }}
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
@@ -59,6 +62,23 @@
                                                     <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
                                                         {{ $category->name }}
                                                     </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900 dark:text-gray-100">
+                                                    @if($category->type == 'income')
+                                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                                            {{ __('Income') }}
+                                                        </span>
+                                                    @elseif($category->type == 'expense')
+                                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                                                            {{ __('Expense') }}
+                                                        </span>
+                                                    @else
+                                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                                            {{ __('Both') }}
+                                                        </span>
+                                                    @endif
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">

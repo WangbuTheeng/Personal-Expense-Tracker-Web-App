@@ -29,7 +29,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
                                 <div class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Amount') }}</div>
-                                <div class="mt-1 text-2xl font-bold text-gray-900 dark:text-gray-100">NRs {{ number_format($expense->amount, 2) }}</div>
+                                <div class="mt-1 text-2xl font-bold text-red-600 dark:text-red-400">NRs {{ number_format(abs($expense->amount), 2) }}</div>
                             </div>
 
                             <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
@@ -56,6 +56,15 @@
                                 <div class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Recurring') }}</div>
                                 <div class="mt-1 font-medium text-gray-900 dark:text-gray-100">
                                     {{ __(ucfirst($expense->recurring_frequency)) }}
+                                </div>
+                                <div class="mt-2">
+                                    <form action="{{ route('expenses.toggle-skip', $expense) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="text-sm text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-600">
+                                            {{ $expense->skip_next ? __('Don\'t skip next occurrence') : __('Skip next occurrence') }}
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             @endif
@@ -92,4 +101,4 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>

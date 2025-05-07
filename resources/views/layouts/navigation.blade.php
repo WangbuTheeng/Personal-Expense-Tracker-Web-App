@@ -2,6 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
+            <!-- Left side navigation -->
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -26,7 +27,7 @@
                         {{ __('Expenses') }}
                     </x-nav-link>
 
-                    <x-nav-link href="#" :active="request()->routeIs('income.*')">
+                    <x-nav-link :href="route('income.index')" :active="request()->routeIs('income.*')">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -40,24 +41,50 @@
                         {{ __('Budgets') }}
                     </x-nav-link>
 
-                    <x-nav-link href="#" :active="request()->routeIs('savings.*')">
+                    <x-nav-link :href="route('savings.index')" :active="request()->routeIs('savings.*')">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                         </svg>
-                        {{ __('Savings') }}
+                        {{ __('Savings Goals') }}
                     </x-nav-link>
-
-                    <x-nav-link href="#" :active="request()->routeIs('reports.*')">
+                    
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                        </svg>
+                        {{ __('Categories') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link :href="route('reports.index')" :active="request()->routeIs('reports.*')">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         {{ __('Reports') }}
                     </x-nav-link>
+                    
+                    <x-nav-link :href="route('notifications.index')" :active="request()->routeIs('notifications.*')">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
+                            {{ __('Notifications') }}
+                            @if(auth()->user()->unreadNotifications->count() > 0)
+                                <span class="ml-2 bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                                    {{ auth()->user()->unreadNotifications->count() }}
+                                </span>
+                            @endif
+                        </div>
+                    </x-nav-link>
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
+            <!-- Right side navigation -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <!-- Dark Mode Toggle -->
+                <div class="mr-4">
+                    <x-dark-mode-toggle />
+                </div>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -76,7 +103,7 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link href="#">
+                        <x-dropdown-link :href="route('settings.index')">
                             {{ __('Settings') }}
                         </x-dropdown-link>
 
@@ -115,17 +142,30 @@
             <x-responsive-nav-link :href="route('expenses.index')" :active="request()->routeIs('expenses.*')">
                 {{ __('Expenses') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="request()->routeIs('income.*')">
+            <x-responsive-nav-link :href="route('income.index')" :active="request()->routeIs('income.*')">
                 {{ __('Income') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('budgets.index')" :active="request()->routeIs('budgets.*')">
                 {{ __('Budgets') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="request()->routeIs('savings.*')">
-                {{ __('Savings') }}
+            <x-responsive-nav-link :href="route('savings.index')" :active="request()->routeIs('savings.*')">
+                {{ __('Savings Goals') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="request()->routeIs('reports.*')">
+            <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                {{ __('Categories') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('reports.index')" :active="request()->routeIs('reports.*')">
                 {{ __('Reports') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('notifications.index')" :active="request()->routeIs('notifications.*')">
+                <div class="flex items-center">
+                    {{ __('Notifications') }}
+                    @if(auth()->user()->unreadNotifications->count() > 0)
+                        <span class="ml-2 bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                            {{ auth()->user()->unreadNotifications->count() }}
+                        </span>
+                    @endif
+                </div>
             </x-responsive-nav-link>
         </div>
 
@@ -137,11 +177,16 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <!-- Dark Mode Toggle for mobile -->
+                <div class="px-4 py-2">
+                    <x-dark-mode-toggle />
+                </div>
+                
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link href="#">
+                <x-responsive-nav-link :href="route('settings.index')">
                     {{ __('Settings') }}
                 </x-responsive-nav-link>
 

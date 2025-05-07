@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="{'dark': localStorage.getItem('darkMode') === 'true'}" x-init="if (!localStorage.getItem('darkMode')) localStorage.setItem('darkMode', 'false')">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +13,22 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <!-- Initialize Dark Mode -->
+        <script>
+            // Apply dark mode immediately on page load
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                if (localStorage.getItem('darkMode') === null) {
+                    localStorage.setItem('darkMode', 'false');
+                }
+            }
+        </script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -32,5 +45,7 @@
                 {{ $slot }}
             </main>
         </div>
+        
+        @stack('scripts')
     </body>
 </html>

@@ -18,12 +18,14 @@ class Expense extends Model
     protected $fillable = [
         'user_id',
         'category_id',
+        'type',
         'amount',
         'description',
         'date',
         'notes',
         'is_recurring',
         'recurring_frequency',
+        'skip_next',
     ];
     
     /**
@@ -35,6 +37,7 @@ class Expense extends Model
         'date' => 'date',
         'amount' => 'decimal:2',
         'is_recurring' => 'boolean',
+        'skip_next' => 'boolean',
     ];
     
     /**

@@ -7,9 +7,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CategoryController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
@@ -36,6 +39,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:50|unique:categories,name,NULL,id,user_id,' . Auth::id(),
             'color' => 'required|string|max:7',
             'icon' => 'nullable|string|max:50',
+            'type' => 'required|string|in:income,expense,both',
         ]);
 
         Auth::user()->categories()->create($request->all());
@@ -74,6 +78,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:50|unique:categories,name,' . $category->id . ',id,user_id,' . Auth::id(),
             'color' => 'required|string|max:7',
             'icon' => 'nullable|string|max:50',
+            'type' => 'required|string|in:income,expense,both',
         ]);
 
         $category->update($request->all());

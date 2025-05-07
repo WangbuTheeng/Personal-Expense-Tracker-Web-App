@@ -8,15 +8,22 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ExpenseController extends Controller
 {
+    use AuthorizesRequests;
+    
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $expenses = Auth::user()->expenses()->with('category')->latest()->paginate(10);
+        $expenses = Auth::user()->expenses()
+            ->where('type', 'expense')
+            ->with('category')
+            ->latest()
+            ->paginate(10);
         return view('expenses.index', compact('expenses'));
     }
 
@@ -25,7 +32,13 @@ class ExpenseController extends Controller
      */
     public function create(): View
     {
-        $categories = Auth::user()->categories()->get();
+        $categories = Auth::user()->categories()
+            ->where(function($query) {
+                $query->where('type', 'expense')
+                      ->orWhere('type', 'both');
+            })
+            ->orderBy('name')
+            ->get();
         return view('expenses.create', compact('categories'));
     }
 
@@ -44,7 +57,13 @@ class ExpenseController extends Controller
             'recurring_frequency' => 'required_if:is_recurring,1|nullable|string',
         ]);
 
-        Auth::user()->expenses()->create($request->all());
+        $data = $request->all();
+        // Store expense amount as negative
+        $data['amount'] = -1 * abs($data['amount']);
+        // Set type as expense
+        $data['type'] = 'expense';
+
+        Auth::user()->expenses()->create($data);
 
         return redirect()->route('expenses.index')
             ->with('success', 'Expense created successfully.');
@@ -65,7 +84,13 @@ class ExpenseController extends Controller
     public function edit(Expense $expense): View
     {
         $this->authorize('update', $expense);
-        $categories = Auth::user()->categories()->get();
+        $categories = Auth::user()->categories()
+            ->where(function($query) {
+                $query->where('type', 'expense')
+                      ->orWhere('type', 'both');
+            })
+            ->orderBy('name')
+            ->get();
         return view('expenses.edit', compact('expense', 'categories'));
     }
 
@@ -86,7 +111,13 @@ class ExpenseController extends Controller
             'recurring_frequency' => 'required_if:is_recurring,1|nullable|string',
         ]);
 
-        $expense->update($request->all());
+        $data = $request->all();
+        // Store expense amount as negative
+        $data['amount'] = -1 * abs($data['amount']);
+        // Set type as expense
+        $data['type'] = 'expense';
+
+        $expense->update($data);
 
         return redirect()->route('expenses.index')
             ->with('success', 'Expense updated successfully.');
@@ -102,5 +133,23 @@ class ExpenseController extends Controller
 
         return redirect()->route('expenses.index')
             ->with('success', 'Expense deleted successfully.');
+    }
+
+    /**
+     * Toggle the skip_next flag for a recurring expense.
+     */
+    public function toggleSkip(Expense $expense): RedirectResponse
+    {
+        $this->authorize('update', $expense);
+        
+        if (!$expense->is_recurring) {
+            return back()->with('error', 'Only recurring expenses can be skipped.');
+        }
+
+        $expense->skip_next = !$expense->skip_next;
+        $expense->save();
+
+        $message = $expense->skip_next ? 'Next occurrence will be skipped.' : 'Next occurrence will not be skipped.';
+        return back()->with('success', $message);
     }
 }
